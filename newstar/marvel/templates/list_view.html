@@ -1,0 +1,40 @@
+<!-- this is the page for listing all businesses-->
+{% extends "index.html" %}
+{% block name_me %}
+List
+{% endblock name_me %}
+{% block stuff %}
+<br>
+<div class="row center" >
+	{% for item in avengers %}
+	<div class="col-md-6">
+		<div class="card border-secondary mb-3">
+			
+	</div>
+		  <div class="card-header"><a href="{% url 'weapons' name_id=item.id %}" class="btn btn-info"> Name :{{item.name}}  </a>
+		</div>
+		<div align="center"> 
+		{% if item.image %}
+		<img class="card-img-top" style="width: 6rem;" src="{{item.image.url}}" alt="Card image cap"> 
+		{% endif %}
+		</div> 
+		  <div class="card-body text-secondary">
+		    <h5 class="card-title">Description :{{item.description}} </h5>
+		    <p class="card-text">Release Date :{{item.release_date}}</p>
+		    <p class="card-text">Platform  : {{item.platforms}} </p>
+		     <p class="card-text">Mulitiplayer ? : {{item.multiplayer}} </p> 
+		  </div>
+
+		</div>
+		<!--<a href="{% url 'business_update' name_id=item.id %}" class="btn btn-info"> Update </a> 
+		<a href="{% url 'delete' name_id=item.id %}" class="btn btn-secondary" > Delete </a>-->
+	<P> </P>
+	</div>
+
+<br>
+	 
+	{% endfor %}
+
+</div>
+<br>
+{% endblock stuff %}
