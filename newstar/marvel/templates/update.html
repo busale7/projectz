@@ -1,0 +1,32 @@
+<!-- this is the page updating for avengers -->
+{% extends "index.html" %}
+{% block batman %}
+create 
+{% endblock batman %}
+{% block superman %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+	<!-- we are telling the -->
+	<div class=" row">
+  <!-- the business_update is the variable in the urls.py file it tells is go to URL file and url file will send it bach to the view.py for the function in it -->
+	<form action="{% url 'eagle' fury_id=game.id %}" method="POST">
+				{% csrf_token %} 
+				{{form|crispy}}
+				<input type="submit" value ="Update" class="btn btn-dark" onclick="alert('Updated!')">
+
+	</form>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock superman %}

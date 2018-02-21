@@ -1,0 +1,23 @@
+<!-- this is the page for creating an entry for avengers -->
+{% extends "index.html" %}
+{% block batman %}
+create 
+{% endblock batman %}
+{% block superman %}
+{% load crispy_forms_tags %}
+<br>
+<div class="container">
+	<!-- we are telling the -->
+	<div class=" row">
+	<form action="{% url 'create_create' %}"  method="post" enctype ="multipart/form-data">{{form|crispy}}
+		{% csrf_token %} 
+	<input type="submit" value="Submit" class="btn btn-lg btn-primary"></form>
+	
+	<!-- .as_p is to put the form things in vertical way*/ -->
+	</div>
+</div>
+
+
+
+
+{% endblock superman %}

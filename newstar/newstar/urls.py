@@ -21,6 +21,19 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.ironman, name="weapons")
+    path('',views.ironman, name="hulk_hulk"),
+    path('create/', views.create, name="create_create"),
+    path('detail/<int:fury_id>/', views.detail, name="black_widow"),
+    path('update/<int:fury_id>/', views.update, name="eagle"),
+    path('delete/<int:fury_id>/', views.delete, name='delete'),
+    path('register/', views.user_registration, name='register'),
+    path('login/', views.user_login, name='login'),
 
 ]
+
+
+if settings.DEBUG:
+    urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

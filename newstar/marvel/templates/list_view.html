@@ -1,40 +1,47 @@
 <!-- this is the page for listing all businesses-->
 {% extends "index.html" %}
-{% block name_me %}
+{% block batman %}
 List
-{% endblock name_me %}
-{% block stuff %}
+{% endblock batman %}
+{% block superman %}
 <br>
-<div class="row center" >
-	{% for item in avengers %}
-	<div class="col-md-6">
-		<div class="card border-secondary mb-3">
-			
-	</div>
-		  <div class="card-header"><a href="{% url 'weapons' name_id=item.id %}" class="btn btn-info"> Name :{{item.name}}  </a>
+{% for men in avengers %}
+ 
+<div  align='center'>
+	 <div class="row center justify-content-md-center" >
+		<div class="col-md-6">
+		
+			<div class="card border-info mb-3" style="width: 28rem;">
+				{% if men.image %}
+					
+					
+			  <img class="card-img-top" src="{{men.image.url}}" alt="Card image cap">
+			  {% endif %}
+			  <div class="card-body">
+			    <div class="card-header"><a href="{% url 'black_widow' fury_id=men.id %}"> <h5 class="card-title">GAME TITLE: {{men.name}}</h5> </a>
+			    <p class="card-text">Available only on :  {{men.platforms}}</p>
+			  </div>
+			  <ul class="list-group list-group-flush">
+			    <li class="list-group-item">Released Date : {{men.release_date}}</li>
+			    <li class="list-group-item">
+					{% if men.multiplayer %}
+					Multiplayer Available
+					{% else %}
+					Single Player only 
+					{% endif %}
+
+			 	</li>
+			   
+			  </ul>
+			  <div class="card-footer bg-transparent border-success">
+			    <a href="{% url 'eagle' fury_id=men.id %}">Update</a>
+			   <a href="{% url 'delete' fury_id=men.id %}" class="btn btn-secondary" > Delete </a>
+			  </div>
+			</div>
+			</div>
 		</div>
-		<div align="center"> 
-		{% if item.image %}
-		<img class="card-img-top" style="width: 6rem;" src="{{item.image.url}}" alt="Card image cap"> 
-		{% endif %}
-		</div> 
-		  <div class="card-body text-secondary">
-		    <h5 class="card-title">Description :{{item.description}} </h5>
-		    <p class="card-text">Release Date :{{item.release_date}}</p>
-		    <p class="card-text">Platform  : {{item.platforms}} </p>
-		     <p class="card-text">Mulitiplayer ? : {{item.multiplayer}} </p> 
-		  </div>
-
-		</div>
-		<!--<a href="{% url 'business_update' name_id=item.id %}" class="btn btn-info"> Update </a> 
-		<a href="{% url 'delete' name_id=item.id %}" class="btn btn-secondary" > Delete </a>-->
-	<P> </P>
 	</div>
-
-<br>
-	 
-	{% endfor %}
-
 </div>
 <br>
-{% endblock stuff %}
+{% endfor %}
+{% endblock superman %}
