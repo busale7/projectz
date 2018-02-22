@@ -2,10 +2,15 @@ from django.shortcuts import render ,redirect
 from django.http  import HttpResponse
 from .models import Captain
 from .forms import CaptainForm , UserRegistrationForm , LoginForm
-from django.contrib.auth import authenticate , login
+from django.contrib.auth import authenticate , login ,logout
+
 
 
 # Create your views here.
+def user_logout(request):
+	logout(request)
+	return redirect('login')
+	
 def user_login(request):
 	form =LoginForm()
 	if request.method =="POST":
@@ -31,6 +36,7 @@ def user_registration(request):
 			user =form.save(commit=False)
 			user.set_password(user.password)
 			user.save()
+			login(request, user)
 			return redirect("hulk_hulk")
 	context ={
 		"form":form
